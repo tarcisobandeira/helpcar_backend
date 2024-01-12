@@ -20,7 +20,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Usuarios {
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String firstname;
     private String lastname;
@@ -41,8 +42,12 @@ public class Usuarios {
         this.password = data.password();
     }
 
-    public Usuarios(String email){
+    public Usuarios(String email) {
         this.email = email;
+    }
+
+    public Usuarios(UUID id) {
+        this.id = id;
     }
 
 }

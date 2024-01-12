@@ -7,10 +7,8 @@ import com.sb.helpcar.response.UsuariosResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
+import javax.crypto.*;
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -19,15 +17,13 @@ import java.util.List;
 public class UsuariosController {
     @Autowired
     private UsuariosRepository repository;
-    private PasswordController pc = new PasswordController();
 
     public UsuariosController() throws NoSuchPaddingException, NoSuchAlgorithmException {
     }
 
     @PostMapping(value = "user/save")
-    public void InsertUsuario(@RequestBody UsuariosRequestDTO data) {
+    public void InsertUsuario(@RequestBody UsuariosRequestDTO data) throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, UnsupportedEncodingException {
         Usuarios u = new Usuarios(data);
-        u.setPassword(pc.CriptCreate(u.getPassword()));
         repository.save(u);
         return;
     }
@@ -39,10 +35,8 @@ public class UsuariosController {
     }
 
     @GetMapping(value = "user/login/{email}")
-    public UsuariosResponseDTO filterLogin(@PathVariable String email) {
+    public UsuariosResponseDTO filterLogin(@PathVariable String email) throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, UnsupportedEncodingException {
         UsuariosResponseDTO ur = repository.findByEmail(email);
-        Usuarios u = new Usuarios(ur);
-        u.setPassword(pc.Descript(u.getPassword()));
         return ur;
     }
 }

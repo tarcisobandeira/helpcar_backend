@@ -5,9 +5,9 @@ import com.sb.helpcar.entities.Usuarios;
 
 import java.util.UUID;
 
-public record MotoristasResponseDTO(UUID id, Long cpf, Usuarios usuarios) {
+public record MotoristasResponseDTO(Integer id, Long cpf, Usuarios usuario) {
     public MotoristasResponseDTO(Motoristas m){
-        this(m.getId(), m.getCpf(), m.getUsuarios());
+        this(m.getId(), m.getCpf(), m.getUsuario());
     }
 
 

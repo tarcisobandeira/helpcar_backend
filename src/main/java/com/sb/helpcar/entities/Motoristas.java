@@ -6,29 +6,26 @@ import com.sb.helpcar.response.MotoristasResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.UUID;
-
 @Table
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class Motoristas {
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private Long cpf;
     @OneToOne
-    private Usuarios usuarios;
+    private Usuarios usuario;
 
     public Motoristas(MotoristasResponseDTO data){
         this.cpf = data.cpf();
-        this.usuarios = data.usuarios();
+        this.usuario = data.usuario();
     }
 
-    public Motoristas(MotoristasRequestDTO data) {
+    public Motoristas(MotoristasRequestDTO data, Usuarios u) {
         this.cpf = data.cpf();
-        this.usuarios = data.usuarios();
+        this.usuario = u;
     }
 }

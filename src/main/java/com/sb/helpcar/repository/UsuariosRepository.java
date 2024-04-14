@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface UsuariosRepository extends JpaRepository<Usuarios, UUID> {
+public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
 
     UsuariosResponseDTO findByEmail(String email);
 
-    UsuariosResponseDTO findByid(UUID id);
+    UsuariosResponseDTO findByid(Integer id);
 
 }

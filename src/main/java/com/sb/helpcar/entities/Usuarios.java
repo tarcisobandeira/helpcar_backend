@@ -18,11 +18,10 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class Usuarios {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String firstname;
     private String lastname;
     private String email;
@@ -36,6 +35,7 @@ public class Usuarios {
     }
 
     public Usuarios(UsuariosResponseDTO data) {
+        this.id = data.id();
         this.firstname = data.firstname();
         this.lastname = data.lastname();
         this.email = data.email();
@@ -46,7 +46,7 @@ public class Usuarios {
         this.email = email;
     }
 
-    public Usuarios(UUID id) {
+    public Usuarios(Integer id) {
         this.id = id;
     }
 

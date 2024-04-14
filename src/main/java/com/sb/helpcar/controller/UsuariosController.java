@@ -41,7 +41,7 @@ public class UsuariosController {
     }
 
     @GetMapping(value = "user/{id}")
-    public UsuariosResponseDTO getMotoristaId(@PathVariable UUID id){
+    public UsuariosResponseDTO getMotoristaId(@PathVariable Integer id){
         UsuariosResponseDTO ur = repository.findByid(id);
         return ur;
     }

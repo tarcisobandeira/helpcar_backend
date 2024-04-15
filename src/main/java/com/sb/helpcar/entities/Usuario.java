@@ -1,16 +1,9 @@
 package com.sb.helpcar.entities;
 
-import com.sb.helpcar.repository.UsuariosRepository;
 import com.sb.helpcar.request.UsuariosRequestDTO;
 import com.sb.helpcar.response.UsuariosResponseDTO;
 import jakarta.persistence.*;
-import jakarta.security.auth.message.callback.SecretKeyCallback;
 import lombok.*;
-
-import javax.crypto.*;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.UUID;
 
 @Table
 @Entity
@@ -18,7 +11,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuarios {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -27,14 +20,14 @@ public class Usuarios {
     private String email;
     private String password;
 
-    public Usuarios(UsuariosRequestDTO data) {
+    public Usuario(UsuariosRequestDTO data) {
         this.firstname = data.firstname();
         this.lastname = data.lastname();
         this.email = data.email();
         this.password = data.password();
     }
 
-    public Usuarios(UsuariosResponseDTO data) {
+    public Usuario(UsuariosResponseDTO data) {
         this.id = data.id();
         this.firstname = data.firstname();
         this.lastname = data.lastname();
@@ -42,11 +35,11 @@ public class Usuarios {
         this.password = data.password();
     }
 
-    public Usuarios(String email) {
+    public Usuario(String email) {
         this.email = email;
     }
 
-    public Usuarios(Integer id) {
+    public Usuario(Integer id) {
         this.id = id;
     }
 

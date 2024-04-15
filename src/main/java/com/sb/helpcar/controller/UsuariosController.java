@@ -1,20 +1,13 @@
 package com.sb.helpcar.controller;
 
-import com.sb.helpcar.entities.Usuarios;
+import com.sb.helpcar.entities.Usuario;
 import com.sb.helpcar.repository.UsuariosRepository;
 import com.sb.helpcar.request.UsuariosRequestDTO;
-import com.sb.helpcar.response.MotoristasResponseDTO;
 import com.sb.helpcar.response.UsuariosResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.crypto.*;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 public class UsuariosController {
@@ -23,7 +16,7 @@ public class UsuariosController {
 
     @PostMapping(value = "user/save")
     public void InsertUsuario(@RequestBody UsuariosRequestDTO data) {
-        Usuarios u = new Usuarios(data);
+        Usuario u = new Usuario(data);
         repository.save(u);
         return;
     }

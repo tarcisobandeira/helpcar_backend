@@ -1,7 +1,7 @@
 package com.sb.helpcar.repository;
 
-import com.sb.helpcar.entities.Motoristas;
+import com.sb.helpcar.entities.Motorista;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MotoristasRepository extends JpaRepository<Motoristas, Integer> {
+public interface MotoristasRepository extends JpaRepository<Motorista, Integer> {
 }

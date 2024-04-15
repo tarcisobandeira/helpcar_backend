@@ -1,6 +1,5 @@
 package com.sb.helpcar.entities;
 
-import com.sb.helpcar.request.EmpresasRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,20 +12,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Empresa {
+public class ModeloVeiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
-    private String x;
-    private String y;
     @ManyToOne
-    private Usuario usuario;
-
-    public Empresa(EmpresasRequestDTO data, Usuario u) {
-        this.nome = data.nome();
-        this.x = data.x();
-        this.y = data.y();
-        this.usuario = u;
-    }
+    private MarcaVeiculo marcaVeiculo;
 }

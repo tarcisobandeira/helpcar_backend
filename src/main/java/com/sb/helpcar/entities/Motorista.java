@@ -12,19 +12,19 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Motoristas {
+public class Motorista {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Long cpf;
     @OneToOne
-    private Usuarios usuario;
+    private Usuario usuario;
 
-    public Motoristas(MotoristasResponseDTO data){
+    public Motorista(MotoristasResponseDTO data){
         this.cpf = data.cpf();
         this.usuario = data.usuario();
     }
 
-    public Motoristas(MotoristasRequestDTO data, Usuarios u) {
+    public Motorista(MotoristasRequestDTO data, Usuario u) {
         this.cpf = data.cpf();
         this.usuario = u;
     }

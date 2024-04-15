@@ -1,11 +1,10 @@
 package com.sb.helpcar.controller;
 
-import com.sb.helpcar.entities.Motoristas;
-import com.sb.helpcar.entities.Usuarios;
+import com.sb.helpcar.entities.Motorista;
+import com.sb.helpcar.entities.Usuario;
 import com.sb.helpcar.repository.MotoristasRepository;
 import com.sb.helpcar.repository.UsuariosRepository;
 import com.sb.helpcar.request.MotoristasRequestDTO;
-import com.sb.helpcar.request.UsuariosRequestDTO;
 import com.sb.helpcar.response.MotoristasResponseDTO;
 import com.sb.helpcar.response.UsuariosResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +26,8 @@ public class MotoristasController {
     @PostMapping(value = "motorista/save")
     public void InsertMotorista(@RequestBody MotoristasRequestDTO data){
         UsuariosResponseDTO ur = userRepository.findByid(data.id_usuario());
-        Usuarios u = new Usuarios(ur);
-        Motoristas m = new Motoristas(data, u);
+        Usuario u = new Usuario(ur);
+        Motorista m = new Motorista(data, u);
         repository.save(m);
         return;
     }

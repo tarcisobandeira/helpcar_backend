@@ -17,6 +17,14 @@ public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private String placa;
+    private Integer ano;
+    private Double quilometragem;
+    private String cor;
+    private Integer combustivel;
+    private Integer ativo;
     @ManyToOne
     private ModeloVeiculo modeloVeiculo;
+    @ManyToOne
+    private Motorista motorista;
 }

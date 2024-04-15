@@ -18,15 +18,15 @@ public class Empresa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
-    private String x;
-    private String y;
+    private String localizacao;
+    private String cnpj;
+    private Integer ativo;
     @ManyToOne
     private Usuario usuario;
 
     public Empresa(EmpresasRequestDTO data, Usuario u) {
         this.nome = data.nome();
-        this.x = data.x();
-        this.y = data.y();
+        this.localizacao = data.localizacao();
         this.usuario = u;
     }
 }

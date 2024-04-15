@@ -1,11 +1,11 @@
 package com.sb.helpcar.entities;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ManyToAny;
 
 @Table
 @Entity
@@ -13,16 +13,16 @@ import org.hibernate.annotations.ManyToAny;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Servico {
+public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
     private String descricao;
-    private Double valor;
-    private String tempo;
+    private Double valor_avista;
+    private Double valor_aprazo;
+    private Integer quantidade;
     private Integer ativo;
     @ManyToOne
     private Empresa empresa;
-
 }

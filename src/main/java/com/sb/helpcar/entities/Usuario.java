@@ -19,6 +19,7 @@ public class Usuario {
     private String lastname;
     private String email;
     private String password;
+    private Integer ativo;
 
     public Usuario(UsuariosRequestDTO data) {
         this.firstname = data.firstname();

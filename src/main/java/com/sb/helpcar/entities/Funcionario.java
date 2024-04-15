@@ -19,6 +19,7 @@ public class Funcionario {
     private String sobrenome;
     private String funcao;
     private Date primeiroDia;
+    private Integer ativo;
     @ManyToOne
     private Empresa empresa;
 }

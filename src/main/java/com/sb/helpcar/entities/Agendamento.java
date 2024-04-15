@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ManyToAny;
 
 @Table
 @Entity
@@ -13,16 +12,15 @@ import org.hibernate.annotations.ManyToAny;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Servico {
+public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String nome;
-    private String descricao;
-    private Double valor;
-    private String tempo;
-    private Integer ativo;
+    private Integer status;
     @ManyToOne
-    private Empresa empresa;
-
+    private Servico servico;
+    @ManyToOne
+    private Motorista motorista;
+    @ManyToOne
+    private Veiculo veiculo;
 }

@@ -1,18 +1,40 @@
 package com.sb.helpcar.controller;
 
+import com.sb.helpcar.entities.Empresa;
+import com.sb.helpcar.entities.Servico;
+import com.sb.helpcar.repository.EmpresasRepository;
 import com.sb.helpcar.repository.ServicosRepository;
+import com.sb.helpcar.request.ServicosRequestDTO;
+import com.sb.helpcar.response.ServicosResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.List;
 
 @RestController
 public class ServicosController {
 
     @Autowired
     ServicosRepository repository;
+    @Autowired
+    EmpresasRepository empresasRepository;
 
     @PostMapping(value = "servico/save")
-    public void InsertServico(){
+    public void InsertServico(@RequestBody ServicosRequestDTO data) {
+        Empresa em = new Empresa(empresasRepository.findByid(data.id_empresa()));
+        Servico s = new Servico(data, em);
+        repository.save(s);
+        return;
+    }
 
+    @GetMapping(value = "servico/all")
+    public List<ServicosResponseDTO> getAll() {
+        List<ServicosResponseDTO> servicoList = repository.findAll().stream().map(ServicosResponseDTO::new).toList();
+        return servicoList;
     }
 }
+

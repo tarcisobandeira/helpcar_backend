@@ -1,5 +1,6 @@
 package com.sb.helpcar.entities;
 
+import com.sb.helpcar.request.ServicosRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,4 +26,12 @@ public class Servico {
     @ManyToOne
     private Empresa empresa;
 
+    public Servico(ServicosRequestDTO data, Empresa em) {
+        this.nome = data.nome();
+        this.descricao = data.descricao();
+        this.valor = data.valor();
+        this.tempo = data.tempo();
+        this.ativo = 1;
+        this.empresa = em;
+    }
 }

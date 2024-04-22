@@ -12,13 +12,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ligacao_FS {
+public class Ligacao_FA {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private Integer status;
     @ManyToOne
     private Funcionario funcionario;
     @ManyToOne
-    private Servico servico;
+    private Agendamento agendamento;
 }

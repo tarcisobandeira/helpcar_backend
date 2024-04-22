@@ -32,6 +32,12 @@ public class Empresa {
         this.usuario = u;
         this.ativo = 1;
     }
-
-    public Empresa(Usuario id_user){this.usuario = id_user;}
+    public Empresa(EmpresasResponseDTO data) {
+        this.id = data.id();
+        this.nome = data.nome();
+        this.localizacao = data.localizacao();
+        this.cnpj = data.cnpj();
+        this.ativo = data.ativo();
+        this.usuario = data.usuario();
+    }
 }

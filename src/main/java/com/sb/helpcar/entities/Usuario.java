@@ -35,13 +35,4 @@ public class Usuario {
         this.email = data.email();
         this.password = data.password();
     }
-
-    public Usuario(String email) {
-        this.email = email;
-    }
-
-    public Usuario(Integer id) {
-        this.id = id;
-    }
-
 }

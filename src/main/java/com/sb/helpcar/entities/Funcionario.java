@@ -1,5 +1,6 @@
 package com.sb.helpcar.entities;
 
+import com.sb.helpcar.request.FuncionariosRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,4 +23,13 @@ public class Funcionario {
     private Integer ativo;
     @ManyToOne
     private Empresa empresa;
+
+    public Funcionario(FuncionariosRequestDTO data, Empresa em) {
+        this.nome = data.nome();
+        this.sobrenome = data.sobrenome();
+        this.funcao = data.funcao();
+        this.primeiroDia = data.primeiroDia();
+        this.ativo = 1;
+        this.empresa = em;
+    }
 }

@@ -1,6 +1,7 @@
 package com.sb.helpcar.entities;
 
 import com.sb.helpcar.request.EmpresasRequestDTO;
+import com.sb.helpcar.response.EmpresasResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,10 @@ public class Empresa {
     public Empresa(EmpresasRequestDTO data, Usuario u) {
         this.nome = data.nome();
         this.localizacao = data.localizacao();
+        this.cnpj = data.cnpj();
         this.usuario = u;
+        this.ativo = 1;
     }
+
+    public Empresa(Usuario id_user){this.usuario = id_user;}
 }

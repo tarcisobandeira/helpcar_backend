@@ -1,5 +1,6 @@
 package com.sb.helpcar.entities;
 
+import com.sb.helpcar.response.ModeloVeiculosResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,4 +20,10 @@ public class ModeloVeiculo {
     private String nome;
     @ManyToOne
     private MarcaVeiculo marcaVeiculo;
+
+    public ModeloVeiculo(ModeloVeiculosResponseDTO data) {
+        this.id = data.id();
+        this.nome = data.nome();
+        this.marcaVeiculo = data.marcaVeiculo();
+    }
 }

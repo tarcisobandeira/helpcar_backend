@@ -1,7 +1,6 @@
 package com.sb.helpcar.entities;
 
-import com.sb.helpcar.request.AgendamentoRequestDTO;
-import com.sb.helpcar.response.AgendamentoResponseDTO;
+import com.sb.helpcar.response.AgendamentosResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +25,7 @@ public class Agendamento {
     @ManyToOne
     private Veiculo veiculo;
 
-    public Agendamento(AgendamentoResponseDTO data){
+    public Agendamento(AgendamentosResponseDTO data){
         this.id = data.id();
         this.status = data.status();
         this.servico = data.servico();

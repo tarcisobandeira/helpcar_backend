@@ -1,13 +1,12 @@
 package com.sb.helpcar.entities;
 
-import com.sb.helpcar.request.VeiculoRequestDTO;
-import com.sb.helpcar.response.VeiculoResponseDTO;
+import com.sb.helpcar.request.VeiculosRequestDTO;
+import com.sb.helpcar.response.VeiculosResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Table
 @Entity
@@ -30,7 +29,7 @@ public class Veiculo {
     @ManyToOne
     private Motorista motorista;
 
-    public Veiculo(VeiculoResponseDTO data){
+    public Veiculo(VeiculosResponseDTO data){
         this.id = data.id();
         this.placa = data.placa();
         this.ano = data.ano();
@@ -42,7 +41,7 @@ public class Veiculo {
         this.motorista = data.motorista();
     }
 
-    public Veiculo(VeiculoRequestDTO data, ModeloVeiculo mv, Motorista m) {
+    public Veiculo(VeiculosRequestDTO data, ModeloVeiculo mv, Motorista m) {
         this.placa = data.placa();
         this.ano = data.ano();
         this.quilometragem = data.quilometragem();

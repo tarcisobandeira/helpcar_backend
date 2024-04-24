@@ -1,6 +1,7 @@
 package com.sb.helpcar.entities;
 
 import com.sb.helpcar.request.ServicosRequestDTO;
+import com.sb.helpcar.response.ServicosResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,5 +34,14 @@ public class Servico {
         this.tempo = data.tempo();
         this.ativo = 1;
         this.empresa = em;
+    }
+
+    public Servico(ServicosResponseDTO data) {
+        this.id = data.id();
+        this.nome = data.nome();
+        this.valor = data.valor();
+        this.tempo = data.tempo();
+        this.ativo = data.ativo();
+        this.empresa = data.empresa();
     }
 }

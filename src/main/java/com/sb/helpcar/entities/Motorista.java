@@ -20,6 +20,7 @@ public class Motorista {
     private Usuario usuario;
 
     public Motorista(MotoristasResponseDTO data){
+        this.id = data.id();
         this.cpf = data.cpf();
         this.usuario = data.usuario();
     }

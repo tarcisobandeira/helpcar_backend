@@ -7,10 +7,7 @@ import com.sb.helpcar.repository.ServicosRepository;
 import com.sb.helpcar.request.ServicosRequestDTO;
 import com.sb.helpcar.response.ServicosResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
@@ -34,6 +31,18 @@ public class ServicosController {
     @GetMapping(value = "servico/all")
     public List<ServicosResponseDTO> getAll() {
         List<ServicosResponseDTO> servicoList = repository.findAll().stream().map(ServicosResponseDTO::new).toList();
+        return servicoList;
+    }
+
+    @GetMapping(value = "servico/{id}")
+    public ServicosResponseDTO getServicoId(@PathVariable Integer id){
+        ServicosResponseDTO sr = repository.findByid(id);
+        return sr;
+    }
+
+    @GetMapping(value = "empresa/servico/{id}")
+    public List<ServicosResponseDTO> findByEmpresaId(@PathVariable Integer id){
+        List<ServicosResponseDTO> servicoList = repository.findByEmpresaId(id);
         return servicoList;
     }
 }

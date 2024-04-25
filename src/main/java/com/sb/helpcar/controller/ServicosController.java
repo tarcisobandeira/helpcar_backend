@@ -1,10 +1,10 @@
 package com.sb.helpcar.controller;
 
-import com.sb.helpcar.entities.Empresa;
-import com.sb.helpcar.entities.Servico;
-import com.sb.helpcar.repository.EmpresasRepository;
-import com.sb.helpcar.repository.ServicosRepository;
+import com.sb.helpcar.entities.*;
+import com.sb.helpcar.repository.*;
+import com.sb.helpcar.request.LigacaoFARequestDTO;
 import com.sb.helpcar.request.ServicosRequestDTO;
+import com.sb.helpcar.response.Ligacao_FAResponseDTO;
 import com.sb.helpcar.response.ServicosResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +19,12 @@ public class ServicosController {
     ServicosRepository repository;
     @Autowired
     EmpresasRepository empresasRepository;
+    @Autowired
+    Ligacao_FARepository ligacaoFaRepository;
+    @Autowired
+    FuncionariosRepository funcionariosRepository;
+    @Autowired
+    AgendamentosRepository agendamentosRepository;
 
     @PostMapping(value = "servico/save")
     public void InsertServico(@RequestBody ServicosRequestDTO data) {
@@ -44,6 +50,21 @@ public class ServicosController {
     public List<ServicosResponseDTO> findByEmpresaId(@PathVariable Integer id){
         List<ServicosResponseDTO> servicoList = repository.findByEmpresaId(id);
         return servicoList;
+    }
+
+    @PostMapping(value = "agendamento/funcionario/save")
+    public void InsertFuncionarioOnAgendamento(@RequestBody LigacaoFARequestDTO data){
+        Funcionario f = new Funcionario(funcionariosRepository.findByid(data.id_funcionario()));
+        Agendamento a = new Agendamento(agendamentosRepository.findByid(data.id_agendamento()));
+        Ligacao_FA ligacaoFa = new Ligacao_FA(f, a);
+        ligacaoFaRepository.save(ligacaoFa);
+        return;
+    }
+
+    @GetMapping(value = "agedamento/funcionario/{id}")
+    public List<Ligacao_FAResponseDTO> getAllFuncionariosByAgendamento(@PathVariable Integer id){
+        List<Ligacao_FAResponseDTO> lList = ligacaoFaRepository.findByAgendamentoId(id);
+        return lList;
     }
 }
 

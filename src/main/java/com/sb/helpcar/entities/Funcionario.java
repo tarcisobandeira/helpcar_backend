@@ -1,6 +1,7 @@
 package com.sb.helpcar.entities;
 
 import com.sb.helpcar.request.FuncionariosRequestDTO;
+import com.sb.helpcar.response.FuncionariosResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,5 +32,14 @@ public class Funcionario {
         this.primeiroDia = data.primeiroDia();
         this.ativo = 1;
         this.empresa = em;
+    }
+
+    public Funcionario(FuncionariosResponseDTO data) {
+        this.nome = data.nome();
+        this.sobrenome = data.sobrenome();
+        this.funcao = data.funcao();
+        this.primeiroDia = data.primeiroDia();
+        this.ativo = data.ativo();
+        this.empresa = data.empresa();
     }
 }

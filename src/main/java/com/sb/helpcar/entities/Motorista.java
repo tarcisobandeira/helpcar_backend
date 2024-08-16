@@ -15,7 +15,7 @@ import lombok.*;
 public class Motorista {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private Long cpf;
+    private String cpf;
     @OneToOne
     private Usuario usuario;
 

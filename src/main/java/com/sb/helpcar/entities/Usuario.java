@@ -26,6 +26,7 @@ public class Usuario {
         this.lastname = data.lastname();
         this.email = data.email();
         this.password = data.password();
+        this.ativo = 1;
     }
 
     public Usuario(UsuariosResponseDTO data) {

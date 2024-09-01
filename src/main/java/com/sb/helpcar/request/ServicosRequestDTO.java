@@ -1,4 +1,4 @@
 package com.sb.helpcar.request;
 
-public record ServicosRequestDTO(String nome, String descricao, Double valor, String tempo, Integer id_empresa) {
+public record ServicosRequestDTO(String nome, String descricao, Double valor, String tempo, Integer id_empresa, Integer id_categoria) {
 }

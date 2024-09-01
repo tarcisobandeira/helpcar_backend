@@ -26,14 +26,17 @@ public class Servico {
     private Integer ativo;
     @ManyToOne
     private Empresa empresa;
+    @ManyToOne
+    private Categoria categoria;
 
-    public Servico(ServicosRequestDTO data, Empresa em) {
+    public Servico(ServicosRequestDTO data, Empresa em, Categoria c) {
         this.nome = data.nome();
         this.descricao = data.descricao();
         this.valor = data.valor();
         this.tempo = data.tempo();
         this.ativo = 1;
         this.empresa = em;
+        this.categoria = c;
     }
 
     public Servico(ServicosResponseDTO data) {
@@ -43,5 +46,6 @@ public class Servico {
         this.tempo = data.tempo();
         this.ativo = data.ativo();
         this.empresa = data.empresa();
+        this.categoria = data.categoria();
     }
 }

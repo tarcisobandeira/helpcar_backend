@@ -8,7 +8,6 @@ import com.sb.helpcar.response.Ligacao_FAResponseDTO;
 import com.sb.helpcar.response.ServicosResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
@@ -25,11 +24,14 @@ public class ServicosController {
     FuncionariosRepository funcionariosRepository;
     @Autowired
     AgendamentosRepository agendamentosRepository;
+    @Autowired
+    CategoriaRepositiry categoriaRepositiry;
 
     @PostMapping(value = "servico/save")
     public void InsertServico(@RequestBody ServicosRequestDTO data) {
         Empresa em = new Empresa(empresasRepository.findByid(data.id_empresa()));
-        Servico s = new Servico(data, em);
+        Categoria c = new Categoria(categoriaRepositiry.findByid(data.id_categoria()));
+        Servico s = new Servico(data, em, c);
         repository.save(s);
         return;
     }
